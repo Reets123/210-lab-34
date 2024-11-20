@@ -35,4 +35,22 @@ public:
     void printGraph() {
         cout << "Graph's adjacency list:" << endl;
         for (int i = 0; i < adjList.size(); i++) {
-            cout << i << " --> "
+            cout << i << " --> ";
+            for (Pair v : adjList[i])
+                cout << "(" << v.first << ", " << v.second << ") ";
+            cout << endl;
+        }
+    }
+
+    void DFS(int vertex) {
+        set<int> visited;
+        stack<int> s;
+        s.push(vertex);
+
+        while (!s.empty()) {
+            int curr = s.top();
+            s.pop();
+
+            if (visited.find(curr) == visited.end()) {
+                visited.insert(curr);
+                cout << curr <
