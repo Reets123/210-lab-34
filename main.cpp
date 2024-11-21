@@ -53,4 +53,28 @@ public:
 
             if (visited.find(curr) == visited.end()) {
                 visited.insert(curr);
-                cout << curr <
+                cout << curr << " ";
+
+                for (auto &neighbour : adjList[curr]) {
+                    int adjVertex = neighbour.first;
+                    if (visited.find(adjVertex) == visited.end()) {
+                        s.push(adjVertex);
+                    }
+                }
+            }
+        }
+        cout << endl;
+    }
+
+    void BFS(int vertex) {
+        set<int> visited;
+        queue<int> q;
+        visited.insert(vertex);
+        q.push(vertex);
+
+        while (!q.empty()) {
+            int curr = q.front();
+            q.pop();
+            cout << curr << " ";
+
+            for (auto &neig
