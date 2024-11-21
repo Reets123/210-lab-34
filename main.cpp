@@ -97,4 +97,13 @@ int main() {
     };
 
     Graph graph(edges);
-    graph.printGraph(
+    graph.printGraph();
+
+    cout << "DFS starting from vertex 0:" << endl;
+    graph.DFS(0);
+    
+    cout << "BFS starting from vertex 0:" << endl;
+    graph.BFS(0);
+
+    return 0;
+}
