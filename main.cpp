@@ -6,10 +6,9 @@
 #include <stack>
 #include <queue>
 #include <set>
-
 using namespace std;
 
-const int SIZE = 15;
+const int SIZE = 15; 
 
 struct Edge {
     int src, dest, weight;
@@ -21,7 +20,7 @@ class Graph {
 public:
     vector<vector<Pair>> adjList;
 
-      Graph(vector<Edge> const &edges) {
+    Graph(vector<Edge> const &edges) {
         adjList.resize(SIZE);
         for (auto &edge : edges) {
             int src = edge.src;
@@ -70,10 +69,10 @@ public:
         cout << "======================================" << endl;
 
         while (!s.empty()) {
-            int curr = s.front();
+            int curr = s.top();
             s.pop();
 
-             if (visited.find(curr) == visited.end()) {
+            if (visited.find(curr) == visited.end()) {
                 visited.insert(curr);
                 cout << "Inspecting Junction " << curr << " ";
                 const char* placeType;
@@ -86,7 +85,7 @@ public:
                     default: placeType = "(Unknown)"; break;
                 }
                 cout << placeType << endl;
-                
+
                 for (auto &neighbour : adjList[curr]) {
                     int adjVertex = neighbour.first;
                     cout << "  → Potential delivery to Junction " << adjVertex << " (Capacity: " << neighbour.second << " items)" << endl;
@@ -95,20 +94,21 @@ public:
                     }
                 }
             }
-            cout << endl;
         }
+        cout << endl;
+    }
 
     void BFS(int vertex) {
         set<int> visited;
         queue<int> q;
         visited.insert(vertex);
         q.push(vertex);
-
+        
         cout << "Layer-by-Layer Network Inspection (BFS) from Junction " << vertex << ":" << endl;
         cout << "Purpose: Analyzing delivery routes by distance from source" << endl;
         cout << "=================================================" << endl;
 
-         while (!q.empty()) {
+        while (!q.empty()) {
             int curr = q.front();
             q.pop();
             const char* placeType;
@@ -148,7 +148,7 @@ int main() {
     Graph graph(edges);
     graph.printGraph();
 
-    graph.DFS(0);
+    graph.DFS(0);  
     graph.BFS(0);
 
     return 0;
