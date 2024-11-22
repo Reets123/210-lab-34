@@ -35,6 +35,16 @@ public:
     void printGraph() {
         cout << "Delivery Network Topology:" << endl;
         cout << "================================" << endl;
+        cout << "Facility connections:" << endl;
+        for (int i = 0; i < adjList.size(); i++) {
+            cout << "Junction " << i << " connects to:";
+            for (Pair v : adjList[i]) {
+                const char* placeType;
+                switch (i) {
+                    case 0: placeType = "Warehouse"; break;
+                    case 1: placeType = "Distribution Hub"; break;
+                    case 2: placeType = "Retail Store"; break;
+                    case 5: placeType = "Customer"; break;
         }
     }
 
