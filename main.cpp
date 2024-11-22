@@ -122,6 +122,18 @@ public:
             }
             cout << "Checking Junction " << curr << " " << placeType << endl;
 
+            for (auto &neighbour : adjList[curr]) {
+                int adjVertex = neighbour.first;
+                if (visited.find(adjVertex) == visited.end()) {
+                    cout << "  → Next delivery area: Junction " << adjVertex << " (Capacity: " << neighbour.second << " items)" << endl;
+                    visited.insert(adjVertex);
+                    q.push(adjVertex);
+                }
+            }
+        }
+        cout << endl;
+    }
+};
 
 int main() {
     vector<Edge> edges = {
