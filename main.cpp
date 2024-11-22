@@ -69,13 +69,20 @@ public:
         cout << "Purpose: Tracing delivery paths through the network" << endl;
         cout << "======================================" << endl;
 
-        while (!s.empty()) {
-            int curr = s.top();
-            s.pop();
+        while (!q.empty()) {
+            int curr = q.front();
+            q.pop();
+            const char* placeType;
+            switch (curr) {
+                case 0: placeType = "(Warehouse)"; break;
+                case 1: placeType = "(Distribution Hub)"; break;
+                case 2: placeType = "(Retail Store)"; break;
+                case 5: placeType = "(Customer)"; break;
+                case 6: placeType = "(Food Truck)"; break;
+                default: placeType = "(Unknown)"; break;
+            }
+            cout << "Checking Junction " << curr << " " << placeType << endl;
 
-            if (visited.find(curr) == visited.end()) {
-                visited.insert(curr);
-                cout << curr << " ";
 
                 for (auto &neighbour : adjList[curr]) {
                     int adjVertex = neighbour.first;
