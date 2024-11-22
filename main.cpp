@@ -69,32 +69,48 @@ public:
         cout << "Purpose: Tracing delivery paths through the network" << endl;
         cout << "======================================" << endl;
 
-        while (!q.empty()) {
-            int curr = q.front();
-            q.pop();
-            const char* placeType;
-            switch (curr) {
-                case 0: placeType = "(Warehouse)"; break;
-                case 1: placeType = "(Distribution Hub)"; break;
-                case 2: placeType = "(Retail Store)"; break;
-                case 5: placeType = "(Customer)"; break;
-                case 6: placeType = "(Food Truck)"; break;
-                default: placeType = "(Unknown)"; break;
-            }
-            cout << "Checking Junction " << curr << " " << placeType << endl;
+        while (!s.empty()) {
+            int curr = s.front();
+            s.pop();
 
-            for (auto &neighbour : adjList[curr]) {
-                int adjVertex = neighbour.first;
-                if (visited.find(adjVertex) == visited.end()) {
-                    cout << "  → Next delivery area: Junction " << adjVertex << " (Capacity: " << neighbour.second << " items)" << endl;
-                    visited.insert(adjVertex);
-                    q.push(adjVertex);
+             if (visited.find(curr) == visited.end()) {
+                visited.insert(curr);
+                cout << "Inspecting Junction " << curr << " ";
+                const char* placeType;
+                switch (curr) {
+                    case 0: placeType = "(Warehouse)"; break;
+                    case 1: placeType = "(Distribution Hub)"; break;
+                    case 2: placeType = "(Retail Store)"; break;
+                    case 5: placeType = "(Customer)"; break;
+                    case 6: placeType = "(Food Truck)"; break;
+                    default: placeType = "(Unknown)"; break;
+                }
+                cout << placeType << endl;
+                
+                for (auto &neighbour : adjList[curr]) {
+                    int adjVertex = neighbour.first;
+                    cout << "  → Potential delivery to Junction " << adjVertex << " (Capacity: " << neighbour.second << " items)" << endl;
+                    if (visited.find(adjVertex) == visited.end()) {
+                        s.push(adjVertex);
+                    }
                 }
             }
+            cout << endl;
         }
-        cout << endl;
-    }
-};
+
+    void BFS(int vertex) {
+        set<int> visited;
+        queue<int> q;
+        visited.insert(vertex);
+        q.push(vertex);
+
+        cout << "Layer-by-Layer Network Inspection (BFS) from Junction " << vertex << ":" << endl;
+        cout << "Purpose: Analyzing delivery routes by distance from source" << endl;
+        cout << "=================================================" << endl;
+
+         while (!q.empty()) {
+            nt c
+
 
 int main() {
     vector<Edge> edges = {
