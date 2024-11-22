@@ -83,32 +83,10 @@ public:
             }
             cout << "Checking Junction " << curr << " " << placeType << endl;
 
-
-                for (auto &neighbour : adjList[curr]) {
-                    int adjVertex = neighbour.first;
-                    if (visited.find(adjVertex) == visited.end()) {
-                        s.push(adjVertex);
-                    }
-                }
-            }
-        }
-        cout << endl;
-    }
-
-    void BFS(int vertex) {
-        set<int> visited;
-        queue<int> q;
-        visited.insert(vertex);
-        q.push(vertex);
-
-        while (!q.empty()) {
-            int curr = q.front();
-            q.pop();
-            cout << curr << " ";
-
             for (auto &neighbour : adjList[curr]) {
                 int adjVertex = neighbour.first;
                 if (visited.find(adjVertex) == visited.end()) {
+                    cout << "  → Next delivery area: Junction " << adjVertex << " (Capacity: " << neighbour.second << " items)" << endl;
                     visited.insert(adjVertex);
                     q.push(adjVertex);
                 }
@@ -121,23 +99,17 @@ public:
 int main() {
     vector<Edge> edges = {
         {0, 1, 8}, {0, 2, 21}, 
-        {1, 2, 6}, {1, 3, 5}, {1, 4, 4}, 
-        {2, 7, 11}, {2, 8, 8}, 
-        {3, 5, 9}, 
-        {5, 6, 10}, {5, 7, 15}, {5, 8, 5}, 
-        {6, 7, 3}, {6, 8, 7}, 
-        {7, 2, 11}, 
-        {9, 10, 4}, {10, 11, 6}, {11, 12, 5}, 
-        {12, 13, 7}, {13, 14, 9}, {14, 9, 3}
+        {1, 2, 6}, {1, 5, 5}, {1, 6, 4}, 
+        {2, 9, 11}, {2, 10, 8}, 
+        {6, 11, 10}, {6, 12, 15}, {6, 14, 5}, 
+        {9, 13, 3}, {10, 12, 7}, {11, 14, 9}, 
+        {12, 13, 3}, {13, 9, 6}
     };
 
     Graph graph(edges);
     graph.printGraph();
 
-    cout << "DFS starting from vertex 0:" << endl;
     graph.DFS(0);
-    
-    cout << "BFS starting from vertex 0:" << endl;
     graph.BFS(0);
 
     return 0;
