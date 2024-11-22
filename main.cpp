@@ -45,6 +45,14 @@ public:
                     case 1: placeType = "Distribution Hub"; break;
                     case 2: placeType = "Retail Store"; break;
                     case 5: placeType = "Customer"; break;
+                    case 6: placeType = "Food Truck"; break;
+                    case 9: placeType = "Supplier"; break;
+                    case 10: placeType = "Regional Hub"; break;
+                    case 11: placeType = "Processing Facility"; break;
+                    case 12: placeType = "Storage Facility"; break;
+                    case 13: placeType = "Client"; break;
+                    case 14: placeType = "Vendor"; break;
+                    default: placeType = "Unknown"; break;
         }
     }
 
