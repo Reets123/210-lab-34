@@ -53,6 +53,10 @@ public:
                     case 13: placeType = "Client"; break;
                     case 14: placeType = "Vendor"; break;
                     default: placeType = "Unknown"; break;
+                }
+                cout << " → Junction " << v.first << " (" << placeType << ", Capacity: " << v.second << " items) ";
+            }
+            cout << endl;
         }
     }
 
@@ -60,6 +64,10 @@ public:
         set<int> visited;
         stack<int> s;
         s.push(vertex);
+
+        cout << "Network Trace (DFS) from Junction " << vertex << ":" << endl;
+        cout << "Purpose: Tracing delivery paths through the network" << endl;
+        cout << "======================================" << endl;
 
         while (!s.empty()) {
             int curr = s.top();
