@@ -109,7 +109,18 @@ public:
         cout << "=================================================" << endl;
 
          while (!q.empty()) {
-            nt c
+            int curr = q.front();
+            q.pop();
+            const char* placeType;
+            switch (curr) {
+                case 0: placeType = "(Warehouse)"; break;
+                case 1: placeType = "(Distribution Hub)"; break;
+                case 2: placeType = "(Retail Store)"; break;
+                case 5: placeType = "(Customer)"; break;
+                case 6: placeType = "(Food Truck)"; break;
+                default: placeType = "(Unknown)"; break;
+            }
+            cout << "Checking Junction " << curr << " " << placeType << endl;
 
 
 int main() {
