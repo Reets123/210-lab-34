@@ -176,7 +176,25 @@ public:
         while (!pq.empty()) {
             int u = pq.top().second;
             pq.pop();
-            inMST[u] = tr
+            inMST[u] = true;
+
+            for (auto &neighbour : adjList[u]) {
+                int v = neighbour.first;
+                int weight = neighbour.second;
+
+                if (!inMST[v] && weight < key[v]) {
+                    key[v] = weight;
+                    pq.push(make_pair(key[v], v));
+                    parent[v] = u; 
+                }
+            }
+        }
+
+        cout << "Minimum Spanning Tree edges:" << endl;
+        cout << "=================================" << endl;
+        for (int i = 1; i < SIZE; i++) {
+            if (parent[i] != -1) {
+                cout << "Edge fr
         }
     }
 };
