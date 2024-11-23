@@ -178,6 +178,7 @@ int main() {
 
     graph.DFS(0);  
     graph.BFS(0);
+    graph.dijkstra(0);
 
     return 0;
 }
