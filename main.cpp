@@ -6,10 +6,11 @@
 #include <stack>
 #include <queue>
 #include <set>
+#include <limits>
+
 using namespace std;
 
 const int SIZE = 15; 
-
 struct Edge {
     int src, dest, weight;
 };
@@ -132,6 +133,20 @@ public:
             }
         }
         cout << endl;
+    }
+
+    void dijkstra(int start) {
+        vector<int> dist(SIZE, numeric_limits<int>::max());
+        dist[start] = 0;
+        set<Pair> s;
+        s.insert(make_pair(0, start));
+
+        while (!s.empty()) {
+            auto [distance, vertex] = *s.begin();
+            s.erase(s.begin());
+
+            for (const auto &neig
+        }
     }
 };
 
