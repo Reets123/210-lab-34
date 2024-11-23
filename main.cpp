@@ -241,11 +241,21 @@ int main() {
             case 4:
                 cout << "Enter starting junction for shortest path calculation: ";
                 cin >> vertex;
-                graph.dijkstra(ver
-    graph.DFS(0);  
-    graph.BFS(0);
-    graph.dijkstra(0); 
-    graph.primMST(0);
+                graph.dijkstra(vertex);
+                break;
+            case 5:
+                cout << "Finding Minimum Spanning Tree starting from junction 0." << endl;
+                graph.primMST(0);
+                break;
+            case 0:
+                cout << "Exiting..." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+                break;
+        }
+        cout << endl;
+    } while (choice != 0);
                 
     return 0;
 }
