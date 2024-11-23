@@ -195,7 +195,7 @@ public:
         for (int i = 1; i < SIZE; i++) {
             if (parent[i] != -1) {
                 cout << "Edge from " << parent[i] << " to " << i << " with capacity: " << key[i] << " units" << endl;
-            }    
+            }
         }
     }
 };
@@ -211,13 +211,25 @@ int main() {
     };
 
     Graph graph(edges);
-    graph.printGraph();
+    int choice, vertex;
 
+    do {
+        cout << "Water Distribution Network Menu:" << endl;
+        cout << "[1] Display water distribution network" << endl;
+        cout << "[2] Check contaminant spread (BFS)" << endl;
+        cout << "[3] Plan inspection route (DFS)" << endl;
+        cout << "[4] Calculate shortest paths" << endl;
+        cout << "[5] Find Minimum Spanning Tree" << endl;
+        cout << "[0] Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
     graph.DFS(0);  
     graph.BFS(0);
     graph.dijkstra(0); 
     graph.primMST(0);
-    
-
+                
     return 0;
 }
