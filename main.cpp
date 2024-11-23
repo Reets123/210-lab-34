@@ -145,7 +145,20 @@ public:
             auto [distance, vertex] = *s.begin();
             s.erase(s.begin());
 
-            for (const auto &neig
+            for (const auto &neighbour : adjList[vertex]) {
+                int newDist = distance + neighbour.second;
+
+                if (newDist < dist[neighbour.first]) {
+                    s.erase(make_pair(dist[neighbour.first], neighbour.first));
+                    dist[neighbour.first] = newDist;
+                    s.insert(make_pair(newDist, neighbour.first));
+                }
+            }
+        }
+
+        cout << "Shortest path from node " << start << ":" << endl;
+        for (int i = 0; i < SIZE; ++i) {
+            cout << start << " -> " << i << " : " << (dist[i] == numeric_limits<int>::max() ? -1 : dist[i]) << endl;
         }
     }
 };
