@@ -7,10 +7,12 @@
 #include <queue>
 #include <set>
 #include <limits>
+#include <algorithm>
 
 using namespace std;
 
 const int SIZE = 15; 
+
 struct Edge {
     int src, dest, weight;
 };
@@ -158,7 +160,23 @@ public:
 
         cout << "Shortest path from node " << start << ":" << endl;
         for (int i = 0; i < SIZE; ++i) {
-            cout << start << " -> " << i << " : " << (dist[i] == numeric_limits<int>::max() ? -1 : dist[i]) << endl;
+            cout << start << " -> " << i << " : " << (dist[i] == numeric_limits<int>::max() ? -1 : dist[i]) << endl; // -1 if no path
+        }
+    }
+
+    void primMST(int start) {
+        vector<int> parent(SIZE, -1);
+        vector<int> key(SIZE, numeric_limits<int>::max());
+        vector<bool> inMST(SIZE, false);
+        key[start] = 0;
+        
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+        pq.push(make_pair(0, start));
+
+        while (!pq.empty()) {
+            int u = pq.top().second;
+            pq.pop();
+            inMST[u] = tr
         }
     }
 };
@@ -178,7 +196,8 @@ int main() {
 
     graph.DFS(0);  
     graph.BFS(0);
-    graph.dijkstra(0);
+    graph.dijkstra(0); 
+    
 
     return 0;
 }
