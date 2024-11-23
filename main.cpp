@@ -194,7 +194,8 @@ public:
         cout << "=================================" << endl;
         for (int i = 1; i < SIZE; i++) {
             if (parent[i] != -1) {
-                cout << "Edge fr
+                cout << "Edge from " << parent[i] << " to " << i << " with capacity: " << key[i] << " units" << endl;
+            }    
         }
     }
 };
@@ -215,6 +216,7 @@ int main() {
     graph.DFS(0);  
     graph.BFS(0);
     graph.dijkstra(0); 
+    graph.primMST(0);
     
 
     return 0;
