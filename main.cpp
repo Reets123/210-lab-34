@@ -226,6 +226,22 @@ int main() {
 
         switch (choice) {
             case 1:
+            graph.printGraph();
+                break;
+            case 2:
+                cout << "Enter starting junction for BFS: ";
+                cin >> vertex;
+                graph.BFS(vertex);
+                break;
+            case 3:
+                cout << "Enter starting junction for DFS: ";
+                cin >> vertex;
+                graph.DFS(vertex);
+                break;
+            case 4:
+                cout << "Enter starting junction for shortest path calculation: ";
+                cin >> vertex;
+                graph.dijkstra(ver
     graph.DFS(0);  
     graph.BFS(0);
     graph.dijkstra(0); 
