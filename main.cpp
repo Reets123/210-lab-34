@@ -214,8 +214,8 @@ int main() {
     int choice, vertex;
 
     do {
-        cout << "Water Distribution Network Menu:" << endl;
-        cout << "[1] Display water distribution network" << endl;
+        cout << "Food Distribution Delivery Network Menu:" << endl;
+        cout << "[1] Display food distribution network" << endl;
         cout << "[2] Check contaminant spread (BFS)" << endl;
         cout << "[3] Plan inspection route (DFS)" << endl;
         cout << "[4] Calculate shortest paths" << endl;
